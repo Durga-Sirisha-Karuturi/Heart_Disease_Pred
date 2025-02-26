@@ -7,7 +7,7 @@ import yaml
 def load_data(data_path):
     return pd.read_csv(data_path)
 
-test_size = 0.20
+test_size = yaml.safe_load(open("params.yaml"))["data_prep"]["test_size"]
 def split_data(data):
     X = data.drop('target', axis=1)
     y = data['target']

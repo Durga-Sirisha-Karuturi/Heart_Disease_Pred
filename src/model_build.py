@@ -9,11 +9,11 @@ def load_data(data_path):
     y_train = pd.read_csv(os.path.join(data_path, 'y_train.csv'))
     return X_train, y_train.squeeze()  # Convert y_train to Series
 
-#solver= yaml.safe_load(open("params.yaml"))["model_build"]["solver"]
-#max_iter= yaml.safe_load(open("params.yaml"))["model_build"]["max_iter"]
+solver= yaml.safe_load(open("params.yaml"))["model_build"]["solver"]
+max_iter= yaml.safe_load(open("params.yaml"))["model_build"]["max_iter"]
 
 def train_model(X_train, y_train):
-    model = LogisticRegression()
+    model = LogisticRegression(solver=solver, max_iter=max_iter)
     model.fit(X_train, y_train)
     return model
 
