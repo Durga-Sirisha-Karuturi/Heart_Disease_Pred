@@ -13,6 +13,8 @@ stages:
     - src/data_prep.py
     outs:
     - data/processed
+    params:
+    - data_prep.test_size
   model_build:
     cmd: python src/model_build.py
     deps:
@@ -20,6 +22,9 @@ stages:
     - src/model_build.py
     outs:
     - models/model.pkl
+    params:
+    - model_build.solver
+    - model_build.max_iter
   model_eval:
     cmd: python src/model_eval.py
     deps:
